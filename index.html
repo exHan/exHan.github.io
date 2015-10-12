@@ -172,94 +172,6 @@
           
           
             
-              <a class="post-title-link" href="/2015/10/12/C++ byte/" itemprop="url">
-                C++字节对齐
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          发表于
-          <time itemprop="dateCreated" datetime="2015-10-12T13:43:05+08:00" content="2015-10-12">
-            2015-10-12
-          </time>
-        </span>
-
-        
-          <span class="post-category" >
-            &nbsp; | &nbsp; 分类于
-            
-              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                <a href="/categories/default/" itemprop="url" rel="index">
-                  <span itemprop="name">default</span>
-                </a>
-              </span>
-
-              
-              
-
-            
-          </span>
-        
-
-        
-          
-        
-      </div>
-    </header>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody"><p>首先，每种类型的变量其对其字节数都是自己的变量长度，比如char对其长度为1，int对其长度为4，double对其长度为8。然后，int对齐的长度为4的实际意义是，int变量必须存储在四的倍数的地址上。</p>
-<p>那么对于：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> &#123;</span><br><span class="line">    <span class="keyword">char</span> b;</span><br><span class="line">    <span class="keyword">int</span> a;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p>其对齐长度为：1 + （3） + 4 = 8；其中3是字节对齐补充的字节数。</p>
-<p>一半而言字节对齐需满足一下3个原则：</p>
-<ol>
-<li>结构体变量的首地址能够被其最大类型成员的大小所整除</li>
-<li>结构体每个成员相对于结构体的首地址的偏移量（offset）都是成员大小的整数倍，如果需要编译器会自动添加字节进行补充</li>
-<li>结构体的总大小为结构体最宽基本数据类型成员大小的整数倍</li>
-</ol>
-<p>如果结构体里面嵌套了结构体就需要注意，结构体的起始地址只是其内部最宽的基本数据类型大小的整数倍，而非结构体自身的整数倍，外面结构体的长度也仅仅是里面最宽的基本数据类型的长度倍数。例如：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> s1 &#123;</span><br><span class="line">    <span class="keyword">char</span> c;     <span class="comment">//1字节，需填充3字节 </span></span><br><span class="line">    <span class="keyword">int</span> i;      <span class="comment">//4字节</span></span><br><span class="line">&#125;;<span class="comment">//大小为8字节</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">struct</span> s2 &#123;</span><br><span class="line">    <span class="keyword">char</span> c1;    <span class="comment">//1字节</span></span><br><span class="line">    s1 s;       <span class="comment">//s1的起始地址应该为s1内部最宽类型的整数倍，即4的整数倍，而不是8，因此c1的填充字节数为3，而不是7</span></span><br><span class="line">    <span class="keyword">char</span> c2;    <span class="comment">//1字节</span></span><br><span class="line">&#125;;<span class="comment">//一共1+3+8+1=13字节，而s2的长度也仅仅是里面最宽的基本数据类型的长度倍数，即4的倍数，不是8的倍数，因此后面填充3字节，而不是7字节，最终的大小为16字节</span></span><br></pre></td></tr></table></figure>
-</span>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
               <a class="post-title-link" href="/2015/10/12/iOS面试经典问题/" itemprop="url">
                 iOS面试经典问题
               </a>
@@ -271,7 +183,7 @@
       <div class="post-meta">
         <span class="post-time">
           发表于
-          <time itemprop="dateCreated" datetime="2015-10-12T13:42:45+08:00" content="2015-10-12">
+          <time itemprop="dateCreated" datetime="2015-10-12T13:55:06+08:00" content="2015-10-12">
             2015-10-12
           </time>
         </span>
@@ -281,8 +193,8 @@
             &nbsp; | &nbsp; 分类于
             
               <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                <a href="/categories/default/" itemprop="url" rel="index">
-                  <span itemprop="name">default</span>
+                <a href="/categories/iOS/" itemprop="url" rel="index">
+                  <span itemprop="name">iOS</span>
                 </a>
               </span>
 
@@ -320,6 +232,94 @@
 <li>viewDidLoad之前会有些什么操作</li>
 <li>GCD中是如何开始执行，又是如何实现回调的</li>
 </ol>
+</span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
+              <a class="post-title-link" href="/2015/10/12/C++ byte/" itemprop="url">
+                C++字节对齐
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于
+          <time itemprop="dateCreated" datetime="2015-10-12T13:54:57+08:00" content="2015-10-12">
+            2015-10-12
+          </time>
+        </span>
+
+        
+          <span class="post-category" >
+            &nbsp; | &nbsp; 分类于
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/C/" itemprop="url" rel="index">
+                  <span itemprop="name">C++</span>
+                </a>
+              </span>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody"><p>首先，每种类型的变量其对其字节数都是自己的变量长度，比如char对其长度为1，int对其长度为4，double对其长度为8。然后，int对齐的长度为4的实际意义是，int变量必须存储在四的倍数的地址上。</p>
+<p>那么对于：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> &#123;</span><br><span class="line">    <span class="keyword">char</span> b;</span><br><span class="line">    <span class="keyword">int</span> a;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>其对齐长度为：1 + （3） + 4 = 8；其中3是字节对齐补充的字节数。</p>
+<p>一半而言字节对齐需满足一下3个原则：</p>
+<ol>
+<li>结构体变量的首地址能够被其最大类型成员的大小所整除</li>
+<li>结构体每个成员相对于结构体的首地址的偏移量（offset）都是成员大小的整数倍，如果需要编译器会自动添加字节进行补充</li>
+<li>结构体的总大小为结构体最宽基本数据类型成员大小的整数倍</li>
+</ol>
+<p>如果结构体里面嵌套了结构体就需要注意，结构体的起始地址只是其内部最宽的基本数据类型大小的整数倍，而非结构体自身的整数倍，外面结构体的长度也仅仅是里面最宽的基本数据类型的长度倍数。例如：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> s1 &#123;</span><br><span class="line">    <span class="keyword">char</span> c;     <span class="comment">//1字节，需填充3字节 </span></span><br><span class="line">    <span class="keyword">int</span> i;      <span class="comment">//4字节</span></span><br><span class="line">&#125;;<span class="comment">//大小为8字节</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">struct</span> s2 &#123;</span><br><span class="line">    <span class="keyword">char</span> c1;    <span class="comment">//1字节</span></span><br><span class="line">    s1 s;       <span class="comment">//s1的起始地址应该为s1内部最宽类型的整数倍，即4的整数倍，而不是8，因此c1的填充字节数为3，而不是7</span></span><br><span class="line">    <span class="keyword">char</span> c2;    <span class="comment">//1字节</span></span><br><span class="line">&#125;;<span class="comment">//一共1+3+8+1=13字节，而s2的长度也仅仅是里面最宽的基本数据类型的长度倍数，即4的倍数，不是8的倍数，因此后面填充3字节，而不是7字节，最终的大小为16字节</span></span><br></pre></td></tr></table></figure>
 </span>
         
       
@@ -380,7 +380,7 @@
 
           <div class="site-state-item site-state-categories">
             <a href="/categories">
-              <span class="site-state-item-count">1</span>
+              <span class="site-state-item-count">2</span>
               <span class="site-state-item-name">分类</span>
               </a>
           </div>
