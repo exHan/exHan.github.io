@@ -101,7 +101,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/C/" style="font-size: 10px;">C++</a> <a href="/tags/Me/" style="font-size: 10px;">Me</a> <a href="/tags/iOS/" style="font-size: 20px;">iOS</a>
+						<a href="/tags/C/" style="font-size: 10px;">C++</a> <a href="/tags/iOS/" style="font-size: 20px;">iOS</a>
 					</div>
 				</section>
 				
@@ -159,6 +159,72 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-C++ byte" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/10/12/C++ byte/" class="article-date">
+  	<time datetime="2015-10-12T10:50:49.000Z" itemprop="datePublished">2015-10-12</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/10/12/C++ byte/">C++字节对齐</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>首先，每种类型的变量其对其字节数都是自己的变量长度，比如char对其长度为1，int对其长度为4，double对其长度为8。然后，int对齐的长度为4的实际意义是，int变量必须存储在四的倍数的地址上。</p>
+<p>那么对于：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> &#123;</span><br><span class="line">    <span class="keyword">char</span> b;</span><br><span class="line">    <span class="keyword">int</span> a;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>其对齐长度为：1 + （3） + 4 = 8；其中3是字节对齐补充的字节数。</p>
+<p>一半而言字节对齐需满足一下3个原则：</p>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C/">C++</a></li></ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/C/">C++</a>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a  href="/2015/10/12/C++ byte/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
     <article id="post-iOS静态库冲突" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -208,65 +274,6 @@
         <p class="article-more-link">
           <a  href="/2015/10/12/iOS静态库冲突/#more">more >></a>
         </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-AboutMe" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2015/10/12/AboutMe/" class="article-date">
-  	<time datetime="2015-10-12T09:32:51.000Z" itemprop="datePublished">2015-10-12</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/10/12/AboutMe/">AboutMe</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>大家好，我叫风轩铭，欢迎访问我的主页！</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Me/">Me</a></li></ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/Me/">Me</a>
-	</div>
-
-
       
       <div class="clearfix"></div>
     </div>
@@ -336,76 +343,6 @@
       
 	<div class="article-category tagcloud">
 	<a class="article-category-link" href="/categories/iOS/">iOS</a>
-	</div>
-
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-C++ byte" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2015/10/12/C++ byte/" class="article-date">
-  	<time datetime="2015-10-12T05:54:57.000Z" itemprop="datePublished">2015-10-12</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/10/12/C++ byte/">C++字节对齐</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>首先，每种类型的变量其对其字节数都是自己的变量长度，比如char对其长度为1，int对其长度为4，double对其长度为8。然后，int对齐的长度为4的实际意义是，int变量必须存储在四的倍数的地址上。</p>
-<p>那么对于：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> &#123;</span><br><span class="line">    <span class="keyword">char</span> b;</span><br><span class="line">    <span class="keyword">int</span> a;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p>其对齐长度为：1 + （3） + 4 = 8；其中3是字节对齐补充的字节数。</p>
-<p>一半而言字节对齐需满足一下3个原则：</p>
-<ol>
-<li>结构体变量的首地址能够被其最大类型成员的大小所整除</li>
-<li>结构体每个成员相对于结构体的首地址的偏移量（offset）都是成员大小的整数倍，如果需要编译器会自动添加字节进行补充</li>
-<li>结构体的总大小为结构体最宽基本数据类型成员大小的整数倍</li>
-</ol>
-<p>如果结构体里面嵌套了结构体就需要注意，结构体的起始地址只是其内部最宽的基本数据类型大小的整数倍，而非结构体自身的整数倍，外面结构体的长度也仅仅是里面最宽的基本数据类型的长度倍数。例如：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> s1 &#123;</span><br><span class="line">    <span class="keyword">char</span> c;     <span class="comment">//1字节，需填充3字节 </span></span><br><span class="line">    <span class="keyword">int</span> i;      <span class="comment">//4字节</span></span><br><span class="line">&#125;;<span class="comment">//大小为8字节</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">struct</span> s2 &#123;</span><br><span class="line">    <span class="keyword">char</span> c1;    <span class="comment">//1字节</span></span><br><span class="line">    s1 s;       <span class="comment">//s1的起始地址应该为s1内部最宽类型的整数倍，即4的整数倍，而不是8，因此c1的填充字节数为3，而不是7</span></span><br><span class="line">    <span class="keyword">char</span> c2;    <span class="comment">//1字节</span></span><br><span class="line">&#125;;<span class="comment">//一共1+3+8+1=13字节，而s2的长度也仅仅是里面最宽的基本数据类型的长度倍数，即4的倍数，不是8的倍数，因此后面填充3字节，而不是7字节，最终的大小为16字节</span></span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C/">C++</a></li></ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/C/">C++</a>
 	</div>
 
 
