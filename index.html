@@ -163,7 +163,7 @@
   
     <div class="article-meta">
       <a href="/2015/10/12/iOS静态库冲突/" class="article-date">
-  	<time datetime="2015-10-12T09:38:31.000Z" itemprop="datePublished">2015-10-12</time>
+  	<time datetime="2015-10-12T09:40:54.000Z" itemprop="datePublished">2015-10-12</time>
 </a>
     </div>
   
@@ -186,7 +186,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p><strong>问题描述：</strong>海康提供的demo中的静态库和FFMPEG中的静态库文件使用了相同的全局变量，导致编译时不通过，具体信息如下：</p>
-<p><img src="/Users/han/Documents/MakeDown/duplicateSymbols.png" alt=""></p>
+<p><img src="./duplicateSymbols.png" alt=""></p>
 <p><strong>解决办法：</strong>合并冲突的静态链接库为一个，本案例中找到libPlayCtrl_sim.a静态链接库和libffmpeg.a静态链接库进行合并工作。具体合并工作参考如下：<br><a href="http://www.cnblogs.com/wengzilin/p/3734751.html" target="_blank" rel="external">http://www.cnblogs.com/wengzilin/p/3734751.html</a></p>
 <blockquote>
 <p>以下是从外国友人那获取的终极解决策略，方案是修改类库：<br>I’m going to assume that these are two third party libraries that have only provided you with the .a files and not the source code. You can use libtool, lipo and ar on the terminal to extract and recombine the files.<br>假设有两个三方类库仅提供给你了.a文件，没有源码，你可以通过libtool, lipo和ar在terminal中解压合并他们。<br>To see what architectures are in the file:<br>查看文件都支持了什么架构<br>$ lipo -info libTapjoy.a<br>Architectures in the fat file: libTapjoy.a are: armv6 i386  </p>
