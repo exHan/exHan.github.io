@@ -37,28 +37,28 @@
   <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.1" />
 
 
-<meta name="description" content="###C++字节对齐
-首先，每种类型的变量其对其字节数都是自己的变量长度，比如char对其长度为1，int对其长度为4，double对其长度为8。然后，int对齐的长度为4的实际意义是，int变量必须存储在四的倍数的地址上。
+<meta name="description" content="首先，每种类型的变量其对其字节数都是自己的变量长度，比如char对其长度为1，int对其长度为4，double对其长度为8。然后，int对齐的长度为4的实际意义是，int变量必须存储在四的倍数的地址上。
 那么对于：
 1234struct &amp;#123;    char b;    int a;&amp;#125;;
-其对齐长度为：1 + （3） + 4 = 8；其中3是字节对齐补充的字">
+其对齐长度为：1 + （3） + 4 = 8；其中3是字节对齐补充的字节数。
+一半而言字节对">
 <meta property="og:type" content="article">
 <meta property="og:title" content="C++字节对齐">
 <meta property="og:url" content="http://exHan.github.io/2015/10/12/C++ byte/index.html">
 <meta property="og:site_name" content="风轩铭的博客">
-<meta property="og:description" content="###C++字节对齐
-首先，每种类型的变量其对其字节数都是自己的变量长度，比如char对其长度为1，int对其长度为4，double对其长度为8。然后，int对齐的长度为4的实际意义是，int变量必须存储在四的倍数的地址上。
+<meta property="og:description" content="首先，每种类型的变量其对其字节数都是自己的变量长度，比如char对其长度为1，int对其长度为4，double对其长度为8。然后，int对齐的长度为4的实际意义是，int变量必须存储在四的倍数的地址上。
 那么对于：
 1234struct &amp;#123;    char b;    int a;&amp;#125;;
-其对齐长度为：1 + （3） + 4 = 8；其中3是字节对齐补充的字">
-<meta property="og:updated_time" content="2015-10-12T03:05:54.000Z">
+其对齐长度为：1 + （3） + 4 = 8；其中3是字节对齐补充的字节数。
+一半而言字节对">
+<meta property="og:updated_time" content="2015-10-12T05:24:57.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="C++字节对齐">
-<meta name="twitter:description" content="###C++字节对齐
-首先，每种类型的变量其对其字节数都是自己的变量长度，比如char对其长度为1，int对其长度为4，double对其长度为8。然后，int对齐的长度为4的实际意义是，int变量必须存储在四的倍数的地址上。
+<meta name="twitter:description" content="首先，每种类型的变量其对其字节数都是自己的变量长度，比如char对其长度为1，int对其长度为4，double对其长度为8。然后，int对齐的长度为4的实际意义是，int变量必须存储在四的倍数的地址上。
 那么对于：
 1234struct &amp;#123;    char b;    int a;&amp;#125;;
-其对齐长度为：1 + （3） + 4 = 8；其中3是字节对齐补充的字">
+其对齐长度为：1 + （3） + 4 = 8；其中3是字节对齐补充的字节数。
+一半而言字节对">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -192,7 +192,7 @@
       <div class="post-meta">
         <span class="post-time">
           发表于
-          <time itemprop="dateCreated" datetime="2015-10-12T11:05:54+08:00" content="2015-10-12">
+          <time itemprop="dateCreated" datetime="2015-10-12T13:24:57+08:00" content="2015-10-12">
             2015-10-12
           </time>
         </span>
@@ -226,8 +226,7 @@
       
 
       
-        <span itemprop="articleBody"><p>###C++字节对齐</p>
-<p>首先，每种类型的变量其对其字节数都是自己的变量长度，比如char对其长度为1，int对其长度为4，double对其长度为8。然后，int对齐的长度为4的实际意义是，int变量必须存储在四的倍数的地址上。</p>
+        <span itemprop="articleBody"><p>首先，每种类型的变量其对其字节数都是自己的变量长度，比如char对其长度为1，int对其长度为4，double对其长度为8。然后，int对齐的长度为4的实际意义是，int变量必须存储在四的倍数的地址上。</p>
 <p>那么对于：</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> &#123;</span><br><span class="line">    <span class="keyword">char</span> b;</span><br><span class="line">    <span class="keyword">int</span> a;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 <p>其对齐长度为：1 + （3） + 4 = 8；其中3是字节对齐补充的字节数。</p>
@@ -252,6 +251,18 @@
         </div>
       
 
+      
+        <div class="post-nav">
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/10/12/iOS面试经典问题/" rel="next">iOS面试经典问题</a>
+            
+          </div>
+        </div>
       
 
       
@@ -310,7 +321,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">1</span>
+              <span class="site-state-item-count">2</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -324,7 +335,7 @@
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">1</span>
+              <span class="site-state-item-count">2</span>
               <span class="site-state-item-name">标签</span>
               </a>
           </div>
