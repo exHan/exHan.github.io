@@ -159,6 +159,70 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-iOS静态库冲突" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/10/12/iOS静态库冲突/" class="article-date">
+  	<time datetime="2015-10-12T09:37:20.000Z" itemprop="datePublished">2015-10-12</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/10/12/iOS静态库冲突/">iOS静态库冲突</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>问题描述：</strong>海康提供的demo中的静态库和FFMPEG中的静态库文件使用了相同的全局变量，导致编译时不通过，具体信息如下：</p>
+<p><img src="/Users/han/Documents/MakeDown/duplicateSymbols.png" alt=""></p>
+<p><strong>解决办法：</strong>合并冲突的静态链接库为一个，本案例中找到libPlayCtrl_sim.a静态链接库和libffmpeg.a静态链接库进行合并工作。具体合并工作参考如下：<br><a href="http://www.cnblogs.com/wengzilin/p/3734751.html" target="_blank" rel="external">http://www.cnblogs.com/wengzilin/p/3734751.html</a></p>
+<blockquote>
+<p>以下是从外国友人那获取的终极解决策略，方案是修改类库：<br>I’m going to assume that these are two third party libraries that have only provided you with the .a files and not the source code. You can use libtool, lipo and ar on the terminal to extract and recombine the files.<br>假设有两个三方类库仅提供给你了.a文件，没有源码，你可以通过libtool, lipo和ar在terminal中解压合并他们。<br>To see what architectures are in the file:<br>查看文件都支持了什么架构<br>$ lipo -info libTapjoy.a<br>Architectures in the fat file: libTapjoy.a are: armv6 i386  </p>
+<p>Then to extract just armv6, for example:<br>然后只解压armv6，例如<br>$ lipo -extract_family armv6 -output libTapjoy-armv6.a libTapjoy.a<br>$ mkdir armv6<br>$ cd armv6<br>$ ar -x ../libTapjoy-armv6.a</p>
+<p>You can then extract the same architecture from the other library into the same directory and then recombine them like so:<br>你可以从另一个类库中解压同样架构的部分，然后将两者合并在一起<br>$ libtool -static -o ../lib-armv6.a *.o</p>
+<p>And then finally, after you’ve done this with each architecture, you can combine them again with lipo:<br>如上所示，你可以将所有架构都按照这个流程走一遍，然后合并<br>$ cd ..<br>$ lipo -create -output lib.a lib-armv6.a lib-i386.a</p>
+<p>This should get rid of any duplicate symbols, but will also combine the two libraries into one. If you want to keep them separate, or just delete the duplicate from one library, you can modify the process accordingly.<br>这个过程不仅解决掉了duplicate symbols的问题，也将两个类库合并为一个。如果你想分别保存两个类库，你可以将duplicate的部分从任意一个类库中删除，你可以相应的修改这个过程。  </p>
+</blockquote>
+<p>此外，还可以通过其他方法将不同的架构（如arm64，armv7等等）从静态库中分离出来，如下所示  </p>
+<blockquote>
+<p>lipo libx.a -thin armv6 -output libx-armv6.a<br>lipo libx.a -thin armv7 -output libx-armv7.a</p>
+</blockquote>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
     <article id="post-AboutMe" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
