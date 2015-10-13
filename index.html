@@ -177,7 +177,7 @@
       <div class="post-meta">
         <span class="post-time">
           发表于
-          <time itemprop="dateCreated" datetime="2015-10-13T11:11:08+08:00" content="2015-10-13">
+          <time itemprop="dateCreated" datetime="2015-10-13T11:17:45+08:00" content="2015-10-13">
             2015-10-13
           </time>
         </span>
@@ -214,12 +214,18 @@
         
           <span itemprop="articleBody"><p>在尝试使用Hexo（3.0）搭配nexT主题时出现了各种问题，折腾很久终于解决了部分问题，总结如下。</p>
 <h2 id="Hexo+nexT的搭建">Hexo+nexT的搭建</h2><p>对于搭建Hexo环境和配置nexT主题，网上有很多教程，这里推荐Joe’s Room的博客：<br><a href="http://joehill.me/2015/05/18/2015-05-18-Hexo-GitHub-Disqus" target="_blank" rel="external">在GitHub上搭建基于Hexo的静态Blog</a><br>按照博主的步骤一步一步亲测可以搭建成功。</p>
-<h2 id="Hexo_3-0_Deploy出错_Not_Found_Git">Hexo 3.0 Deploy出错 Not Found Git</h2><p>Hexo 3.0需要修改<strong>站点配置文件</strong>中的_config.yml文件，对于文件中的deploy字段，应该将<strong>type</strong>由<strong>github</strong>修改为<strong>git</strong>  </p>
+<h2 id="Hexo_3-0_Deploy出错_Not_Found_Git">Hexo 3.0 Deploy出错 Not Found Git</h2><p>Hexo 3.0需要修改<b>站点配置文件</b>中的_config.yml文件，对于文件中的deploy字段，应该将<b>type</b>由<b>github</b>修改为<b>git</b>  </p>
 <figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">deploy</span>:</span><br><span class="line">  <span class="attribute">type</span>: git</span><br><span class="line">  <span class="attribute">repository</span>: <span class="attribute">https</span>:<span class="comment">//github.com/yourname/yourname.github.io</span></span><br><span class="line">  <span class="attribute">branch</span>: master</span><br><span class="line"><span class="built_in">``</span>`  </span><br><span class="line"></span><br><span class="line">其中将yourname修改为你对应的数据。如果此时，hexo d仍然出现错误，那么可能是应为没有安装git支持，安装方法如下：</span><br></pre></td></tr></table></figure>
-<p>npm install hexo-deployer-git –save<br><figure class="highlight gherkin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">## 导航栏中的分类和标签导航无效404</span></span><br><span class="line"></span><br><span class="line">按照Joe给出的方法首先需要生成tags和categaories目录，然后修改其中的index.md文件，最后修改<span class="keyword">*</span><span class="keyword">*</span>主题配置文件<span class="keyword">*</span><span class="keyword">*</span>的menu字段。如果一次操作后依然无法正常使用<span class="keyword">*</span><span class="keyword">*</span>分类<span class="keyword">*</span><span class="keyword">*</span>和<span class="keyword">*</span><span class="keyword">*</span>标签<span class="keyword">*</span><span class="keyword">*</span>导航，Joe给出了一种解决办法。但是这里我要说的是另一种可能，即md文件里语法的问题。</span><br></pre></td></tr></table></figure></p>
-<h1 id="设置当前_page_类型为_tags">设置当前 page 类型为 tags</h1><p>type: “tags”</p>
-<h1 id="设置当前页评论关闭">设置当前页评论关闭</h1><h2 id="comments:_false">comments: false</h2><p>```</p>
-<p>以上述tags为例，如果你是使用<code>hexo new page tags</code>来新建的tags文件夹，会有一个问题就是，在上述md文件的字段中会默认有title和date两个字段（当然你可以修改scaffolds中的文件默认值），而默认生成的date字段的格式是：YYYY-MM-DD HH：MM：SS类似这种类型的，而这种格式很可能就不会被识别，所以我推荐对于tags和categories文件直接<strong>将title和date字段删除掉</strong>，并无大碍。亲测成功！</p>
+<p>npm install hexo-deployer-git –save<br>```</p>
+<h2 id="导航栏中的分类和标签导航无效404">导航栏中的分类和标签导航无效404</h2><p>按照Joe给出的方法首先需要生成tags和categaories目录，然后修改其中的index.md文件，最后修改<strong>主题配置文件</strong>的menu字段。如果一次操作后依然无法正常使用<strong>分类</strong>和<strong>标签</strong>导航，Joe给出了一种解决办法。但是这里我要说的是另一种可能，即md文件里语法的问题。  </p>
+<blockquote>
+<p># 设置当前 page 类型为 tags</p>
+<p>type: “tags”</p>
+<p># 设置当前页评论关闭</p>
+<p>comments: false</p>
+<p>-–</p>
+</blockquote>
+<p>以上述tags为例，如果你是使用<code>hexo new page tags</code>来新建的tags文件夹，会有一个问题就是，在上述md文件的字段中会默认有title和date两个字段（当然你可以修改scaffolds中的文件默认值），而默认生成的date字段的格式是：YYYY-MM-DD HH：MM：SS类似这种类型的，而这种格式很可能就不会被识别，所以我推荐对于tags和categories文件直接<b>将title和date字段删除掉</b>，并无大碍。亲测成功！</p>
 <p>未完待续。。。</p>
 </span>
         
