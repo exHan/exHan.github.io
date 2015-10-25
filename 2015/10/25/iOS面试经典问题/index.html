@@ -52,7 +52,7 @@ viewcontroller的生命周期
 viewDidLoad之前">
 <meta property="og:type" content="article">
 <meta property="og:title" content="iOS面试经典问题">
-<meta property="og:url" content="http://exHan.github.io/2015/10/24/iOS面试经典问题/index.html">
+<meta property="og:url" content="http://exHan.github.io/2015/10/25/iOS面试经典问题/index.html">
 <meta property="og:site_name" content="风轩铭的博客">
 <meta property="og:description" content="Block块问题  
 响应链
@@ -65,7 +65,7 @@ Autoreleasepool的理解
 通知和delegate的区别
 viewcontroller的生命周期
 viewDidLoad之前">
-<meta property="og:updated_time" content="2015-10-24T12:31:42.000Z">
+<meta property="og:updated_time" content="2015-10-25T11:13:27.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iOS面试经典问题">
 <meta name="twitter:description" content="Block块问题  
@@ -214,8 +214,8 @@ viewDidLoad之前">
       <div class="post-meta">
         <span class="post-time">
           发表于
-          <time itemprop="dateCreated" datetime="2015-10-24T20:31:42+08:00" content="2015-10-24">
-            2015-10-24
+          <time itemprop="dateCreated" datetime="2015-10-25T19:13:27+08:00" content="2015-10-25">
+            2015-10-25
           </time>
         </span>
 
@@ -240,8 +240,8 @@ viewDidLoad之前">
           
             <span class="post-comments-count">
               &nbsp; | &nbsp;
-              <a href="/2015/10/24/iOS面试经典问题/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2015/10/24/iOS面试经典问题/" itemprop="commentsCount"></span>
+              <a href="/2015/10/25/iOS面试经典问题/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2015/10/25/iOS面试经典问题/" itemprop="commentsCount"></span>
               </a>
             </span>
           
@@ -269,6 +269,7 @@ viewDidLoad之前">
 <li>viewDidLoad之前会有些什么操作</li>
 <li>GCD中是如何开始执行，又是如何实现回调的</li>
 </ol>
+<a id="more"></a>
 <h2 id="Block专题">Block专题</h2><h3 id="block到底是什么">block到底是什么</h3><p>在面试的时候，面试官通常会问一个问题：OC中block是个什么东西，以下几种答案仅供参考有对有错：</p>
 <ol>
 <li>OC中，block作为对象来处理（某本书中如此解释，但面试官直接否定）</li>
@@ -295,7 +296,7 @@ viewDidLoad之前">
 <p><b>block捕获的自动变量也分为两种情况：普通的自动变量和用__block修饰的自动变量</b></p>
 <p>首先，block可以捕获本block所在作用域内的自动变量。对于捕获的普通自动变量以下简称“自动变量”，对于用__block修饰的自动变量以下简称“__block变量”</p>
 <h4 id="自动变量的行为">自动变量的行为</h4><p>在探索自动变量的行为时，举个例子如下：</p>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> main(<span class="keyword">int</span> argc, <span class="keyword">const</span> <span class="keyword">char</span> * argv[]) &#123;</span><br><span class="line">    <span class="keyword">int</span> a = <span class="number">5</span>;</span><br><span class="line">    <span class="keyword">void</span> (^print)(<span class="keyword">int</span>) = ^(<span class="keyword">int</span> a) &#123;</span><br><span class="line">        a = <span class="number">10</span>;</span><br><span class="line">        printf(<span class="string">"a = %d"</span>, a);</span><br><span class="line">    &#125;;</span><br><span class="line">    print(a);</span><br><span class="line">    printf(<span class="string">"a = %d\n"</span>, a);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> main(<span class="keyword">int</span> argc, <span class="keyword">const</span> <span class="keyword">char</span> * argv[]) &#123;</span><br><span class="line">    <span class="keyword">int</span> a = <span class="number">5</span>;</span><br><span class="line">    <span class="keyword">void</span> (^print)() = ^&#123;</span><br><span class="line">        printf(<span class="string">"a = %d"</span>, a);</span><br><span class="line">    &#125;;</span><br><span class="line">    print();</span><br><span class="line">    printf(<span class="string">"a = %d\n"</span>, a);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>使用clang命令展开为cpp文件，截取其中关键的代码片段如下：</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> __main_block_impl_0 &#123;</span><br><span class="line">  <span class="keyword">struct</span> __block_impl impl;</span><br><span class="line">  <span class="keyword">struct</span> __main_block_desc_0* Desc;</span><br><span class="line">  <span class="keyword">int</span> a;</span><br><span class="line">  __main_block_impl_0(<span class="keyword">void</span> *fp, <span class="keyword">struct</span> __main_block_desc_0 *desc, <span class="keyword">int</span> _a, <span class="keyword">int</span> flags=<span class="number">0</span>) : a(_a) &#123;</span><br><span class="line">    impl.isa = &amp;_NSConcreteStackBlock;</span><br><span class="line">    impl.Flags = flags;</span><br><span class="line">    impl.FuncPtr = fp;</span><br><span class="line">    Desc = desc;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">static</span> <span class="keyword">void</span> __main_block_func_0(<span class="keyword">struct</span> __main_block_impl_0 *__cself) &#123;</span><br><span class="line">  <span class="keyword">int</span> a = __cself-&gt;a; <span class="comment">// bound by copy</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"a = %d\n"</span>, a);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">static</span> <span class="keyword">struct</span> __main_block_desc_0 &#123;</span><br><span class="line">  <span class="keyword">size_t</span> reserved;</span><br><span class="line">  <span class="keyword">size_t</span> Block_size;</span><br><span class="line">&#125; __main_block_desc_0_DATA = &#123; <span class="number">0</span>, <span class="keyword">sizeof</span>(<span class="keyword">struct</span> __main_block_impl_0)&#125;;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">const</span> <span class="keyword">char</span> * argv[])</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> a = <span class="number">5</span>;</span><br><span class="line">    <span class="keyword">void</span> (*print)() = ((<span class="keyword">void</span> (*)())&amp;__main_block_impl_0((<span class="keyword">void</span> *)__main_block_func_0, &amp;__main_block_desc_0_DATA, a));</span><br><span class="line">    ((<span class="keyword">void</span> (*)(__block_impl *))((__block_impl *)print)-&gt;FuncPtr)((__block_impl *)print);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"a = %d\n"</span>, a);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>从上述代码片段中可以看出:</p>
@@ -346,10 +347,10 @@ viewDidLoad之前">
 
     <div class="post-spread">
       
-        <div class="ds-share flat" data-thread-key="2015/10/24/iOS面试经典问题/"
+        <div class="ds-share flat" data-thread-key="2015/10/25/iOS面试经典问题/"
      data-title="iOS面试经典问题"
      data-content=""
-     data-url="http://exHan.github.io/2015/10/24/iOS面试经典问题/">
+     data-url="http://exHan.github.io/2015/10/25/iOS面试经典问题/">
   <div class="ds-share-inline">
     <ul  class="ds-share-icons-16">
 
@@ -375,8 +376,8 @@ viewDidLoad之前">
         
           <div class="comments" id="comments">
             
-              <div class="ds-thread" data-thread-key="2015/10/24/iOS面试经典问题/"
-                   data-title="iOS面试经典问题" data-url="http://exHan.github.io/2015/10/24/iOS面试经典问题/">
+              <div class="ds-thread" data-thread-key="2015/10/25/iOS面试经典问题/"
+                   data-title="iOS面试经典问题" data-url="http://exHan.github.io/2015/10/25/iOS面试经典问题/">
               </div>
             
           </div>
