@@ -52,7 +52,7 @@ viewcontroller的生命周期
 viewDidLoad之前">
 <meta property="og:type" content="article">
 <meta property="og:title" content="iOS面试经典问题">
-<meta property="og:url" content="http://exHan.github.io/2015/10/25/iOS面试经典问题/index.html">
+<meta property="og:url" content="http://exHan.github.io/2015/10/26/iOS面试经典问题/index.html">
 <meta property="og:site_name" content="风轩铭的博客">
 <meta property="og:description" content="Block块问题  
 响应链
@@ -65,7 +65,7 @@ Autoreleasepool的理解
 通知和delegate的区别
 viewcontroller的生命周期
 viewDidLoad之前">
-<meta property="og:updated_time" content="2015-10-25T11:13:27.000Z">
+<meta property="og:updated_time" content="2015-10-26T10:37:29.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iOS面试经典问题">
 <meta name="twitter:description" content="Block块问题  
@@ -177,6 +177,14 @@ viewDidLoad之前">
           </a>
         </li>
       
+        
+        <li class="menu-item menu-item-guestbook">
+          <a href="/guestbook" rel="section">
+            <i class="menu-item-icon icon-next-guestbook"></i> <br />
+            留言
+          </a>
+        </li>
+      
 
       
       
@@ -214,8 +222,8 @@ viewDidLoad之前">
       <div class="post-meta">
         <span class="post-time">
           发表于
-          <time itemprop="dateCreated" datetime="2015-10-25T19:13:27+08:00" content="2015-10-25">
-            2015-10-25
+          <time itemprop="dateCreated" datetime="2015-10-26T18:37:29+08:00" content="2015-10-26">
+            2015-10-26
           </time>
         </span>
 
@@ -240,8 +248,8 @@ viewDidLoad之前">
           
             <span class="post-comments-count">
               &nbsp; | &nbsp;
-              <a href="/2015/10/25/iOS面试经典问题/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2015/10/25/iOS面试经典问题/" itemprop="commentsCount"></span>
+              <a href="/2015/10/26/iOS面试经典问题/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2015/10/26/iOS面试经典问题/" itemprop="commentsCount"></span>
               </a>
             </span>
           
@@ -311,6 +319,11 @@ viewDidLoad之前">
 <p>上述代码段，虽然有点复杂，但是不难发现：</p>
 <p>在block的结构体内定义的a的类型有所变化（第4行），可以看出这里的a是以引用的方式捕获的（而之前的是以拷贝的方式），这就解释了为什么可以在block块内对a进行赋值操作，即block捕获的__block变量是可读可写的。</p>
 <p>因此，如果同一个作用域内的多个块对象想要共享数据，除了全局变量和局部静态变量外，还可以使用__block修饰的自动变量。</p>
+<h3 id="block的内存管理">block的内存管理</h3><p>根据block在内存存放的位置，可以分为三类：</p>
+<ul>
+<li>_NSConcreteGlobalBlock</li>
+<li>_NSConcrete</li>
+</ul>
 </span>
       
     </div>
@@ -347,10 +360,10 @@ viewDidLoad之前">
 
     <div class="post-spread">
       
-        <div class="ds-share flat" data-thread-key="2015/10/25/iOS面试经典问题/"
+        <div class="ds-share flat" data-thread-key="2015/10/26/iOS面试经典问题/"
      data-title="iOS面试经典问题"
      data-content=""
-     data-url="http://exHan.github.io/2015/10/25/iOS面试经典问题/">
+     data-url="http://exHan.github.io/2015/10/26/iOS面试经典问题/">
   <div class="ds-share-inline">
     <ul  class="ds-share-icons-16">
 
@@ -372,12 +385,16 @@ viewDidLoad之前">
  </div>
 
         
+            <!-- 多说热评文章-->
+            <p>热评文章</p>
+            <div class="ds-top-threads" data-range="weekly" data-num-items="4"></div>
+        
 
         
           <div class="comments" id="comments">
             
-              <div class="ds-thread" data-thread-key="2015/10/25/iOS面试经典问题/"
-                   data-title="iOS面试经典问题" data-url="http://exHan.github.io/2015/10/25/iOS面试经典问题/">
+              <div class="ds-thread" data-thread-key="2015/10/26/iOS面试经典问题/"
+                   data-title="iOS面试经典问题" data-url="http://exHan.github.io/2015/10/26/iOS面试经典问题/">
               </div>
             
           </div>
@@ -459,7 +476,7 @@ viewDidLoad之前">
           <div class="post-toc">
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Block专题"><span class="nav-number">1.</span> <span class="nav-text">Block专题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#block到底是什么"><span class="nav-number">1.1.</span> <span class="nav-text">block到底是什么</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Block捕获的变量行为"><span class="nav-number">1.2.</span> <span class="nav-text">Block捕获的变量行为</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#自动变量的行为"><span class="nav-number">1.2.1.</span> <span class="nav-text">自动变量的行为</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#__block变量的行为"><span class="nav-number">1.2.2.</span> <span class="nav-text">__block变量的行为</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Block专题"><span class="nav-number">1.</span> <span class="nav-text">Block专题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#block到底是什么"><span class="nav-number">1.1.</span> <span class="nav-text">block到底是什么</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Block捕获的变量行为"><span class="nav-number">1.2.</span> <span class="nav-text">Block捕获的变量行为</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#自动变量的行为"><span class="nav-number">1.2.1.</span> <span class="nav-text">自动变量的行为</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#__block变量的行为"><span class="nav-number">1.2.2.</span> <span class="nav-text">__block变量的行为</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#block的内存管理"><span class="nav-number">1.3.</span> <span class="nav-text">block的内存管理</span></a></li></ol></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>
